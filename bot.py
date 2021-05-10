@@ -1,6 +1,7 @@
 import telebot
 from functools import partial
 from secret import TOKEN
+from writer import Writer
 
 class Bot:
     def __init__(self, *args, **kwargs):
@@ -28,7 +29,7 @@ class Bot:
         @self.bot.message_handler(func=lambda m: True)
         def echo_all(message):
             self.LIST.append(message)
-            self.bot.reply_to(message, f"Adding this message to list. Message's Index: {len(self.LIST)}")
+            self.bot.reply_to(message, f"Adding this message to list. Message's Index: {len(self.LIST)-1}")
 
     def send_welcome(self, message):
         WELCOME_STRING = """
@@ -55,11 +56,13 @@ class Bot:
         text = text.lstrip("/type").strip()
         try:
             list_id = int(text)
-            bot.reply_to(message, "Typing this message.")
+            self.bot.reply_to(self.LIST[list_id], "Typing this message.")
             self.handle_message_to_copy(self.LIST[list_id].text)
-        except:
+            self.bot.reply_to(message, "Done typing the message.")
+        except Exception as e:
             if len(self.LIST):
                 self.bot.reply_to(message, f"Some error occured. Make sure the number after /type is in the range 0 to {len(self.LIST)-1}")
+                print(e)
             else:
                 self.bot.reply_to(message, "Your typing list is empty. Type /help to get more information.")
 
@@ -76,6 +79,9 @@ class Bot:
     def handle_message_to_copy(self, message):
         #Here, the given message is a string, and not the message object.
         print(message)
+        #Writing the code
+        writer = Writer()
+        writer.write_message(message)
 
     def start(self):
         print("Starting the bot")

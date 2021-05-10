@@ -20,6 +20,7 @@ class Writer:
         self.waiting_time = waiting_time
 
     def write_message(self, message):
+        print("Writing message")
         mistake_after = random.randint(15, 30)
         time.sleep(self.waiting_time)
         counter = 0 
@@ -43,7 +44,7 @@ class Writer:
                 else:
                     #means we need to convert every 4 spaces to 1 tab 
                     count = 1
-                    while message[index] == " ":
+                    while message[index] == " " and index < len(message):
                         count += 1 
                         index += 1 
                     if count%4 == 0:
@@ -58,7 +59,7 @@ class Writer:
             time.sleep(self.sleeping_time)
             counter += 1 
 
-    def make_mistake(self, curr_letter):
+    def make_mistake(self, letter):
         '''
         To make mistakes more beliveable, the code will make
         the same mistakes a human would make, for example, 

@@ -2,6 +2,8 @@
 
 A Python script that uses a Telegram bot to remotely type out text or code, simulating human keystrokes. This is perfect for situations like online coding competitions or workshops where copy-pasting is disabled.
 
+<img src="./screenshot.png" />
+
 ## The Problem 🤔
 
 During a coding competition, participants had to write code in a shared Google Doc where copy-pasting from a local IDE was forbidden. Manually typing everything is slow and error-prone. This tool was built to solve that problem by automating the typing process in a human-like way.

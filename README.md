@@ -1,4 +1,4 @@
-# Simulate Typing Bot 🤖
+# Typing Simulator Bot 🤖
 
 A Python script that uses a Telegram bot to remotely type out text or code, simulating human keystrokes. This is perfect for situations like online coding competitions or workshops where copy-pasting is disabled.
 
@@ -87,3 +87,4 @@ You can customize the typing behavior by modifying the parameters in the `Writer
 * `sleeping_time`: The delay (in seconds) between each keystroke.
 * `make_mistakes`: Set to `True` or `False` to enable/disable the realistic mistakes feature.
 * `waiting_time`: The delay (in seconds) after sending the `/type` command before typing begins, giving you time to switch to the correct window.
+
